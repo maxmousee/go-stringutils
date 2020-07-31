@@ -1,4 +1,4 @@
-package go_stringutils
+package stringutils
 
 import (
 	"github.com/stretchr/testify/assert"

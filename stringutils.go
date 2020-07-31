@@ -1,4 +1,4 @@
-package go_stringutils
+package stringutils
 
 import (
 	"strings"
@@ -73,7 +73,7 @@ func ContainsNone(str string, disallowedChars string) bool {
 }
 
 // Checks if a string is equal to any of the strings in an array
-func EqualsAny(str1 string, str2[] string) bool {
+func EqualsAny(str1 string, str2 []string) bool {
 	for _, aString := range str2 {
 		if str1 == aString {
 			return true
@@ -83,7 +83,7 @@ func EqualsAny(str1 string, str2[] string) bool {
 }
 
 // Checks if a string ends with any of the strings in an array
-func EndsWithAny(str1 string, endings[] string) bool {
+func EndsWithAny(str1 string, endings []string) bool {
 	for _, aSuffix := range endings {
 		if strings.HasSuffix(str1, aSuffix) {
 			return true
@@ -93,7 +93,7 @@ func EndsWithAny(str1 string, endings[] string) bool {
 }
 
 // Checks if a string starts with any of the strings in an array
-func StartsWithAny(str1 string, endings[] string) bool {
+func StartsWithAny(str1 string, endings []string) bool {
 	for _, aSuffix := range endings {
 		if strings.HasPrefix(str1, aSuffix) {
 			return true
@@ -108,7 +108,7 @@ func EqualsIgnoreCase(str1 string, str2 string) bool {
 }
 
 // Checks if strings are equal to any string in the array, ignoring case
-func EqualsAnyIgnoreCase(str1 string, str2[] string) bool {
+func EqualsAnyIgnoreCase(str1 string, str2 []string) bool {
 	for _, aString := range str2 {
 		if EqualsIgnoreCase(str1, aString) {
 			return true
@@ -123,7 +123,7 @@ func ContainsIgnoreCase(str1 string, str2 string) bool {
 }
 
 // Checks if str1 contains any of the strings in str2, ignoring case. (Unicode)
-func ContainsAnyIgnoreCase(str1 string, str2[] string) bool {
+func ContainsAnyIgnoreCase(str1 string, str2 []string) bool {
 	for _, aString := range str2 {
 		if ContainsIgnoreCase(str1, aString) {
 			return true

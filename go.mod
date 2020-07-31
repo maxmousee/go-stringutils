@@ -1,4 +1,4 @@
-module go-stringutils
+module stringutils
 
 go 1.14
 
