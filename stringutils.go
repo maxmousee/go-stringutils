@@ -107,7 +107,7 @@ func EqualsIgnoreCase(str1 string, str2 string) bool {
 	return strings.EqualFold(str1, str2)
 }
 
-// EqualsIgnoreCase checks if strings are equal to any string in the array, ignoring case
+// EqualsAnyIgnoreCase checks if strings are equal to any string in the array, ignoring case
 func EqualsAnyIgnoreCase(str1 string, str2 []string) bool {
 	for _, aString := range str2 {
 		if EqualsIgnoreCase(str1, aString) {
