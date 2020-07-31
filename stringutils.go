@@ -2,6 +2,7 @@ package go_stringutils
 
 import (
 	"strings"
+	"unicode"
 	"unicode/utf8"
 )
 
@@ -129,4 +130,14 @@ func ContainsAnyIgnoreCase(str1 string, str2[] string) bool {
 		}
 	}
 	return false
+}
+
+// Deletes all whitespaces from a given string
+func DeleteWhitespace(str string) string {
+	return strings.Map(func(r rune) rune {
+		if unicode.IsSpace(r) {
+			return -1
+		}
+		return r
+	}, str)
 }

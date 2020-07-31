@@ -195,3 +195,19 @@ func TestContainsAnyIgnoreCase(t *testing.T) {
 	result = ContainsAnyIgnoreCase("abc.exe", []string{".txt"})
 	assertions.False(result)
 }
+
+func TestDeleteWhitespace(t *testing.T) {
+	assertions := assert.New(t)
+
+	result := DeleteWhitespace("")
+	assertions.Equal("", result)
+
+	result = DeleteWhitespace("       ")
+	assertions.Equal("", result)
+
+	result = DeleteWhitespace("string string")
+	assertions.Equal("stringstring", result)
+
+	result = DeleteWhitespace("      string     string     ")
+	assertions.Equal("stringstring", result)
+}
