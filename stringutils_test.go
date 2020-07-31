@@ -176,3 +176,22 @@ func TestContainsIgnoreCase(t *testing.T) {
 	result = ContainsIgnoreCase("abc.exe", ".txt")
 	assertions.False(result)
 }
+
+func TestContainsAnyIgnoreCase(t *testing.T) {
+	assertions := assert.New(t)
+
+	result := ContainsAnyIgnoreCase("abc.exe", []string{"ABC.exe"})
+	assertions.True(result)
+
+	result = ContainsAnyIgnoreCase("abc.exe", []string{"abc.exe"})
+	assertions.True(result)
+
+	result = ContainsAnyIgnoreCase("abc.exe", []string{"ABC"})
+	assertions.True(result)
+
+	result = ContainsAnyIgnoreCase("abc.exe", []string{".EXE"})
+	assertions.True(result)
+
+	result = ContainsAnyIgnoreCase("abc.exe", []string{".txt"})
+	assertions.False(result)
+}

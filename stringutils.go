@@ -109,7 +109,7 @@ func EqualsIgnoreCase(str1 string, str2 string) bool {
 // Checks if strings are equal to any string in the array, ignoring case
 func EqualsAnyIgnoreCase(str1 string, str2[] string) bool {
 	for _, aString := range str2 {
-		if strings.EqualFold(str1, aString) {
+		if EqualsIgnoreCase(str1, aString) {
 			return true
 		}
 	}
@@ -119,4 +119,14 @@ func EqualsAnyIgnoreCase(str1 string, str2[] string) bool {
 // Checks if str1 contains str2, ignoring case. (Unicode)
 func ContainsIgnoreCase(str1 string, str2 string) bool {
 	return strings.Contains(strings.ToLower(str1), strings.ToLower(str2))
+}
+
+// Checks if str1 contains any of the strings in str2, ignoring case. (Unicode)
+func ContainsAnyIgnoreCase(str1 string, str2[] string) bool {
+	for _, aString := range str2 {
+		if ContainsIgnoreCase(str1, aString) {
+			return true
+		}
+	}
+	return false
 }
