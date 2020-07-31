@@ -149,3 +149,80 @@ func AppendIfMissing(str string, suffix string) string {
 	}
 	return str + suffix
 }
+
+const minCJKCharacter = '\u3400'
+
+// IsAlphabet checks r is a letter but not CJK character.
+func IsAlphabet(r rune) bool {
+	if !unicode.IsLetter(r) {
+		return false
+	}
+
+	switch {
+	// Quick check for non-CJK character.
+	case r < minCJKCharacter:
+		return true
+
+	// Common CJK characters.
+	case r >= '\u4E00' && r <= '\u9FCC':
+		return false
+
+	// Rare CJK characters.
+	case r >= '\u3400' && r <= '\u4D85':
+		return false
+
+	// Rare and historic CJK characters.
+	case r >= '\U00020000' && r <= '\U0002B81D':
+		return false
+	}
+	return true
+}
+
+// WordSplit splits a string into words. Returns a slice of words.
+// If there is no word in a string, return nil.
+//
+// Word is defined as a locale dependent string containing alphabetic characters,
+// which may also contain but not start with `'` and `-` characters.
+func WordSplit(str string) []string {
+	if DeleteWhitespace(str) == "" {
+		return []string{""}
+	}
+
+	var word string
+	var words []string
+	var r rune
+	var size, pos int
+
+	inWord := false
+
+	for len(str) > 0 {
+		r, size = utf8.DecodeRuneInString(str)
+
+		switch {
+		case IsAlphabet(r):
+			if !inWord {
+				inWord = true
+				word = str
+				pos = 0
+			}
+
+		case inWord && (r == '\'' || r == '-'):
+			// Still in word.
+
+		default:
+			if inWord {
+				inWord = false
+				words = append(words, word[:pos])
+			}
+		}
+
+		pos += size
+		str = str[size:]
+	}
+
+	if inWord {
+		words = append(words, word[:pos])
+	}
+
+	return words
+}

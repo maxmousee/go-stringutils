@@ -221,3 +221,19 @@ func TestAppendIfMissing(t *testing.T) {
 	result = AppendIfMissing("abc.exe", ".exe")
 	assertions.Equal("abc.exe", result)
 }
+
+func TestWordSplit(t *testing.T) {
+	assertions := assert.New(t)
+
+	result := WordSplit("abc")
+	assertions.Equal([]string{"abc"}, result)
+
+	result = WordSplit("car house")
+	assertions.Equal([]string{"car", "house"}, result)
+
+	result = WordSplit("car-house")
+	assertions.Equal([]string{"car-house"}, result)
+
+	result = WordSplit("")
+	assertions.Equal([]string{""}, result)
+}
