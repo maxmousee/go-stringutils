@@ -1,6 +1,7 @@
 package go_stringutils
 
 import (
+	"strings"
 	"unicode/utf8"
 )
 
@@ -36,4 +37,20 @@ func Reverse(str string) string {
 		str = str[size:]
 	}
 	return string(buf)
+}
+
+// Checks if the string has only a specific subset of chars
+func ContainsOnly(str string, allowedChar string) bool {
+	if len(allowedChar) == 0 {
+		return false
+	}
+	if str == allowedChar {
+		return true
+	}
+	for _, char := range str {
+		if !strings.Contains(allowedChar, string(char)) {
+			return false
+		}
+	}
+	return true
 }

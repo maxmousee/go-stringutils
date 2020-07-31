@@ -45,3 +45,22 @@ func TestAbbreviate(t *testing.T) {
 	result = Abbreviate("abcd", 3)
 	assertions.Equal("abcd", result)
 }
+
+func TestContainsOnly(t *testing.T) {
+	assertions := assert.New(t)
+
+	result := ContainsOnly("a", "a")
+	assertions.True(result)
+
+	result = ContainsOnly("a", "ab")
+	assertions.True(result)
+
+	result = ContainsOnly("a", "")
+	assertions.False(result)
+
+	result = ContainsOnly("c", "a")
+	assertions.False(result)
+
+	result = ContainsOnly("ac", "a")
+	assertions.False(result)
+}
