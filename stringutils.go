@@ -105,3 +105,13 @@ func StartsWithAny(str1 string, endings[] string) bool {
 func EqualsIgnoreCase(str1 string, str2 string) bool {
 	return strings.EqualFold(str1, str2)
 }
+
+// Checks if strings are equal to any string in the array, ignoring case
+func EqualsAnyIgnoreCase(str1 string, str2[] string) bool {
+	for _, aString := range str2 {
+		if strings.EqualFold(str1, aString) {
+			return true
+		}
+	}
+	return false
+}
