@@ -115,3 +115,8 @@ func EqualsAnyIgnoreCase(str1 string, str2[] string) bool {
 	}
 	return false
 }
+
+// Checks if str1 contains str2, ignoring case. (Unicode)
+func ContainsIgnoreCase(str1 string, str2 string) bool {
+	return strings.Contains(strings.ToLower(str1), strings.ToLower(str2))
+}
