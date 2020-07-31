@@ -141,3 +141,11 @@ func DeleteWhitespace(str string) string {
 		return r
 	}, str)
 }
+
+// Appends a given suffix to a string if the string does not ends with it
+func AppendIfMissing(str string, suffix string) string {
+	if strings.HasSuffix(str, suffix) {
+		return str
+	}
+	return str + suffix
+}

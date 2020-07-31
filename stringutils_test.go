@@ -211,3 +211,13 @@ func TestDeleteWhitespace(t *testing.T) {
 	result = DeleteWhitespace("      string     string     ")
 	assertions.Equal("stringstring", result)
 }
+
+func TestAppendIfMissing(t *testing.T) {
+	assertions := assert.New(t)
+
+	result := AppendIfMissing("abc", ".exe")
+	assertions.Equal("abc.exe", result)
+
+	result = AppendIfMissing("abc.exe", ".exe")
+	assertions.Equal("abc.exe", result)
+}
