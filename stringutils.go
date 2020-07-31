@@ -54,3 +54,18 @@ func ContainsOnly(str string, allowedChar string) bool {
 	}
 	return true
 }
+
+func ContainsNone(str string, disallowedChars string) bool {
+	if len(disallowedChars) == 0 {
+		return true
+	}
+	if str == disallowedChars {
+		return false
+	}
+	for _, char := range str {
+		if strings.Contains(disallowedChars, string(char)) {
+			return false
+		}
+	}
+	return true
+}

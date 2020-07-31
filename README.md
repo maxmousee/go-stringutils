@@ -1,2 +1,2 @@
 # go-stringutils
-StringUtils for Go! :) 
+StringUtils, based on Apache Commons Lang for Java, for Go! :) 

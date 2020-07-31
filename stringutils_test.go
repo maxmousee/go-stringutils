@@ -64,3 +64,22 @@ func TestContainsOnly(t *testing.T) {
 	result = ContainsOnly("ac", "a")
 	assertions.False(result)
 }
+
+func TestContainsNone(t *testing.T) {
+	assertions := assert.New(t)
+
+	result := ContainsNone("a", "a")
+	assertions.False(result)
+
+	result = ContainsNone("a", "ab")
+	assertions.False(result)
+
+	result = ContainsNone("a", "")
+	assertions.True(result)
+
+	result = ContainsNone("c", "a")
+	assertions.True(result)
+
+	result = ContainsNone("ac", "a")
+	assertions.False(result)
+}
