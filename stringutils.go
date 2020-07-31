@@ -55,6 +55,7 @@ func ContainsOnly(str string, allowedChar string) bool {
 	return true
 }
 
+// Checks if the string has none of a specific subset of chars
 func ContainsNone(str string, disallowedChars string) bool {
 	if len(disallowedChars) == 0 {
 		return true
@@ -68,4 +69,14 @@ func ContainsNone(str string, disallowedChars string) bool {
 		}
 	}
 	return true
+}
+
+// Checks if a string is equal to any of the strings in an array
+func EqualsAny(str1 string, str2[] string) bool {
+	for _, aString := range str2 {
+		if str1 == aString {
+			return true
+		}
+	}
+	return false
 }

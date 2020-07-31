@@ -83,3 +83,19 @@ func TestContainsNone(t *testing.T) {
 	result = ContainsNone("ac", "a")
 	assertions.False(result)
 }
+
+func TestEqualsAny(t *testing.T) {
+	assertions := assert.New(t)
+
+	result := EqualsAny("India", []string{"India", "Canada"})
+	assertions.True(result)
+
+	result = EqualsAny("Brazil", []string{"India", "Canada"})
+	assertions.False(result)
+
+	result = EqualsAny("In", []string{"India", "Canada"})
+	assertions.False(result)
+
+	result = EqualsAny("Brazil", []string{""})
+	assertions.False(result)
+}
