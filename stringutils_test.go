@@ -99,3 +99,29 @@ func TestEqualsAny(t *testing.T) {
 	result = EqualsAny("Brazil", []string{""})
 	assertions.False(result)
 }
+
+func TestEndsWithAny(t *testing.T) {
+	assertions := assert.New(t)
+
+	result := EndsWithAny("abc.exe", []string{"exe", "txt"})
+	assertions.True(result)
+
+	result = EndsWithAny("abc.exe", []string{"cpp", "txt"})
+	assertions.False(result)
+
+	result = EndsWithAny("", []string{"txt"})
+	assertions.False(result)
+}
+
+func TestStartsWithAny(t *testing.T) {
+	assertions := assert.New(t)
+
+	result := StartsWithAny("abc.exe", []string{"abc", "txt"})
+	assertions.True(result)
+
+	result = StartsWithAny("abc.exe", []string{"b", "c"})
+	assertions.False(result)
+
+	result = StartsWithAny("", []string{"txt"})
+	assertions.False(result)
+}

@@ -80,3 +80,23 @@ func EqualsAny(str1 string, str2[] string) bool {
 	}
 	return false
 }
+
+// Checks if a string ends with any of the strings in an array
+func EndsWithAny(str1 string, endings[] string) bool {
+	for _, aSuffix := range endings {
+		if strings.HasSuffix(str1, aSuffix) {
+			return true
+		}
+	}
+	return false
+}
+
+// Checks if a string starts with any of the strings in an array
+func StartsWithAny(str1 string, endings[] string) bool {
+	for _, aSuffix := range endings {
+		if strings.HasPrefix(str1, aSuffix) {
+			return true
+		}
+	}
+	return false
+}
