@@ -100,3 +100,8 @@ func StartsWithAny(str1 string, endings[] string) bool {
 	}
 	return false
 }
+
+// Checks if strings are equal ignoring case
+func EqualsIgnoreCase(str1 string, str2 string) bool {
+	return strings.EqualFold(str1, str2)
+}

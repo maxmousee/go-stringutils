@@ -125,3 +125,19 @@ func TestStartsWithAny(t *testing.T) {
 	result = StartsWithAny("", []string{"txt"})
 	assertions.False(result)
 }
+
+func TestEqualsIgnoreCase(t *testing.T) {
+	assertions := assert.New(t)
+
+	result := EqualsIgnoreCase("abc.exe", "ABC.exe")
+	assertions.True(result)
+
+	result = EqualsIgnoreCase("abc.exe", "abc.exe")
+	assertions.True(result)
+
+	result = EqualsIgnoreCase("ABC.EXE", "abc.exe")
+	assertions.True(result)
+
+	result = EqualsIgnoreCase("XYZ", "abc")
+	assertions.False(result)
+}
