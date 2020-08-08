@@ -22,9 +22,9 @@ func TestToken(t *testing.T) {
 	assertions := assert.New(t)
 
 	result := Token{
-		Type:       	"keyword",
-		Position:   	1,
-		Text:			"if",
+		Type:     "keyword",
+		Position: 1,
+		Text:     "if",
 	}
 	assertions.Equal("keyword", result.Type)
 	assertions.Equal("if", result.Text)
