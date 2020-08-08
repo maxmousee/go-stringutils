@@ -179,7 +179,7 @@ func IsAlphabet(r rune) bool {
 }
 
 // WordSplit splits a string into words. Returns a slice of words.
-// If there is no word in a string, return nil.
+// If there is no word in a string, returns an empty string.
 //
 // Word is defined as a locale dependent string containing alphabetic characters,
 // which may also contain but not start with `'` and `-` characters.
