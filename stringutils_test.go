@@ -237,3 +237,34 @@ func TestWordSplit(t *testing.T) {
 	result = WordSplit("")
 	assertions.Equal([]string{""}, result)
 }
+
+func TestIsAlphabet(t *testing.T) {
+	assertions := assert.New(t)
+
+	result := IsAlphabet('a')
+	assertions.True(result)
+
+	result = IsAlphabet('Á')
+	assertions.True(result)
+
+	result = IsAlphabet('ç')
+	assertions.True(result)
+
+	result = IsAlphabet('æ')
+	assertions.True(result)
+
+	result = IsAlphabet('中')
+	assertions.False(result)
+
+	result = IsAlphabet('🎯')
+	assertions.False(result)
+
+	result = IsAlphabet('\u4E00')
+	assertions.False(result)
+
+	result = IsAlphabet('\u3400')
+	assertions.False(result)
+
+	result = IsAlphabet('\U00020000')
+	assertions.False(result)
+}
