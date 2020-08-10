@@ -9,3 +9,63 @@ StringUtils for Go! :)
 
 StringUtils contains common utility functions available in other programming languages and frameworks
 to make it easier for you to manipulate strings, create a parser or a lexer in your project.
+
+------
+
+Installation
+============
+
+To install stringutils, use `go get`:
+
+    go get github.com/maxmousee/stringutils
+
+This will then make the following package(s) available to you:
+
+    github.com/maxmousee/stringutils
+
+Import the `maxmousee/stringutils` package into your code using this template:
+
+```go
+package main
+
+import (
+	"fmt"
+	"github.com/maxmousee/stringutils"
+)
+
+func main() {
+	equalsIgoringCase := stringutils.EqualsIgnoreCase("a", "A")
+	fmt.Println(equalsIgoringCase)
+}
+```
+
+------
+
+Staying up to date
+==================
+
+To update stringutils to the latest version, use `go get -u github.com/maxmousee/stringutils`.
+
+------
+
+Supported go versions
+==================
+
+Support for the last major Go version.
+
+------
+
+Contributing
+============
+
+Please feel free to submit issues, fork the repository and send pull requests!
+
+When submitting an issue, please include a complete test function that demonstrates the issue.
+
+
+------
+
+License
+=======
+
+This project is licensed under the terms of the MIT license.
