@@ -8,7 +8,7 @@ import (
 func TestTokenizeCaseSensitive(t *testing.T) {
 	assertions := assert.New(t)
 
-	tokenTypes := []TokenType{}
+	var tokenTypes []TokenType
 	tokenTypes = append(tokenTypes, TokenType{
 		Type:          "keyword",
 		Words:         []string{"if", "for"},
@@ -23,7 +23,7 @@ func TestTokenizeCaseSensitive(t *testing.T) {
 func TestTokenizeCaseInsensitive(t *testing.T) {
 	assertions := assert.New(t)
 
-	tokenTypes := []TokenType{}
+	var tokenTypes []TokenType
 	tokenTypes = append(tokenTypes, TokenType{
 		Type:          "keyword",
 		Words:         []string{"if", "for"},
@@ -38,7 +38,7 @@ func TestTokenizeCaseInsensitive(t *testing.T) {
 func TestTokenizeWord(t *testing.T) {
 	assertions := assert.New(t)
 
-	tokenTypes := []TokenType{}
+	var tokenTypes []TokenType
 	tokenTypes = append(tokenTypes, TokenType{
 		Type:          "keyword",
 		Words:         []string{"if", "for"},
@@ -53,7 +53,7 @@ func TestTokenizeWord(t *testing.T) {
 func TestLookupType(t *testing.T) {
 	assertions := assert.New(t)
 
-	tokenTypes := []TokenType{}
+	var tokenTypes []TokenType
 	tokenTypes = append(tokenTypes, TokenType{
 		Type:          "keyword",
 		Words:         []string{"if", "for"},
@@ -69,7 +69,7 @@ func TestLookupType(t *testing.T) {
 func TestLookupTypeNotFound(t *testing.T) {
 	assertions := assert.New(t)
 
-	tokenTypes := []TokenType{}
+	var tokenTypes []TokenType
 	tokenTypes = append(tokenTypes, TokenType{
 		Type:          "keyword",
 		Words:         []string{"if", "for"},
