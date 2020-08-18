@@ -4,6 +4,8 @@
 [![Go Report](https://goreportcard.com/badge/github.com/maxmousee/stringutils)](https://goreportcard.com/report/github.com/maxmousee/stringutils)
 [![Coverage Status](https://coveralls.io/repos/github/maxmousee/stringutils/badge.svg?branch=master)](https://coveralls.io/github/maxmousee/stringutils?branch=master)
 [![GoDoc](https://godoc.org/github.com/maxmousee/stringutils?status.svg)](https://godoc.org/github.com/maxmousee/stringutils)
+[![BCH compliance](https://bettercodehub.com/edge/badge/maxmousee/stringutils?branch=master)](https://bettercodehub.com/)
+
 
 StringUtils for Go! :) 
 
