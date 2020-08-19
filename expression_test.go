@@ -127,6 +127,42 @@ func TestFindComplexExpressionsInTokens(t *testing.T) {
 	assertions.True(FindExpressionsInTokens([]Token{token, token2, token3, token4}, []Expression{expression, expression2}))
 }
 
+func TestFindComplexExpressionsInTokensOnSecondTime(t *testing.T) {
+	assertions := assert.New(t)
+	expression := Expression{
+		Type: "bracket",
+		Text: "(",
+	}
+
+	expression2 := Expression{
+		Type: "bracket",
+		Text: ")",
+	}
+
+	token := Token{
+		Type:     "bracket",
+		Position: 1,
+		Text:     "(",
+	}
+	token2 := Token{
+		Type:     "bracket",
+		Position: 2,
+		Text:     "(",
+	}
+	token3 := Token{
+		Type:     "bracket",
+		Position: 3,
+		Text:     ")",
+	}
+	token4 := Token{
+		Type:     "bracket",
+		Position: 4,
+		Text:     "{",
+	}
+
+	assertions.True(FindExpressionsInTokens([]Token{token, token2, token3, token4}, []Expression{expression, expression2}))
+}
+
 func TestDoNotFindComplexExpressionsInTokens(t *testing.T) {
 	assertions := assert.New(t)
 	expression := Expression{
