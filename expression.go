@@ -17,9 +17,8 @@ func FindExpressionsInTokens(tokens []Token, expressions []Expression) bool {
 	} else if len(expressions) == 1 {
 		if len(tokens) > 1 {
 			return FindExpressionInTokens(tokens[1:], expressions[0])
-		} else {
-			return FindExpressionInTokens(tokens, expressions[0])
 		}
+		return FindExpressionInTokens(tokens, expressions[0])
 	}
 	return false
 }
@@ -38,7 +37,6 @@ func FindExpressionInTokens(tokens []Token, expression Expression) bool {
 func MatchToken(token Token, expression Expression) bool {
 	if len(expression.Text) == 0 {
 		return EqualsIgnoreCase(token.Type, expression.Type)
-	} else {
-		return EqualsIgnoreCase(token.Type, expression.Type) && EqualsIgnoreCase(token.Text, expression.Text)
 	}
+	return EqualsIgnoreCase(token.Type, expression.Type) && EqualsIgnoreCase(token.Text, expression.Text)
 }
