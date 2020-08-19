@@ -27,19 +27,13 @@ func TokenizeWord(word string, position int, tokenTypes []TokenType) Token {
 // If no match is found, it returns a token type with "" as type
 func LookupType(word string, tokenTypes []TokenType) TokenType {
 	for _, aToken := range tokenTypes {
-		if aToken.CaseSensitive {
-			if EqualsAny(word, aToken.Words) {
-				return aToken
-			}
-		} else {
-			if EqualsAnyIgnoreCase(word, aToken.Words) {
-				return aToken
-			}
+		if EqualsAnyIgnoreCase(word, aToken.Words) {
+			return aToken
 		}
 	}
+
 	return TokenType{
-		Type:          "",
-		Words:         []string{""},
-		CaseSensitive: false,
+		Type:  "",
+		Words: []string{""},
 	}
 }

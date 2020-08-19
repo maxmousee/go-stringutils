@@ -9,11 +9,9 @@ func TestTokenType(t *testing.T) {
 	assertions := assert.New(t)
 
 	result := TokenType{
-		Type:          "keyword",
-		Words:         []string{"for", "if"},
-		CaseSensitive: true,
+		Type:  "keyword",
+		Words: []string{"for", "if"},
 	}
-	assertions.Equal(true, result.CaseSensitive)
 	assertions.Equal([]string{"for", "if"}, result.Words)
 	assertions.Equal("keyword", result.Type)
 }
