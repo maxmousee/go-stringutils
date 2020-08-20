@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestFindExpressionInTokens(t *testing.T) {
+func TestContainsExpressionInTokens(t *testing.T) {
 	assertions := assert.New(t)
 
 	token := Token{
@@ -18,7 +18,7 @@ func TestFindExpressionInTokens(t *testing.T) {
 		Type: "keyword",
 		Text: "if",
 	}
-	assertions.True(FindExpressionInTokens([]Token{token}, expression))
+	assertions.True(ContainsExpressionInTokens(expression, []Token{token}))
 
 	token = Token{
 		Type:     "bracket",
@@ -30,10 +30,10 @@ func TestFindExpressionInTokens(t *testing.T) {
 		Type: "keyword",
 		Text: "if",
 	}
-	assertions.False(FindExpressionInTokens([]Token{token}, expression))
+	assertions.False(ContainsExpressionInTokens(expression, []Token{token}))
 }
 
-func TestFindExpressionsInTokens(t *testing.T) {
+func TestContainsExpressionsInTokens(t *testing.T) {
 	assertions := assert.New(t)
 
 	token := Token{
@@ -46,7 +46,7 @@ func TestFindExpressionsInTokens(t *testing.T) {
 		Type: "keyword",
 		Text: "if",
 	}
-	assertions.True(FindExpressionsInTokens([]Token{token}, []Expression{expression}))
+	assertions.True(ContainsExpressionsInTokens([]Expression{expression}, []Token{token}))
 
 	token2 := Token{
 		Type:     "bracket",
@@ -58,13 +58,13 @@ func TestFindExpressionsInTokens(t *testing.T) {
 		Type: "bracket",
 		Text: "(",
 	}
-	assertions.True(FindExpressionsInTokens([]Token{token, token2}, []Expression{expression, expression2}))
+	assertions.True(ContainsExpressionsInTokens([]Expression{expression, expression2}, []Token{token, token2}))
 
 	expression2 = Expression{
 		Type: "keyword",
 		Text: "for",
 	}
-	assertions.False(FindExpressionsInTokens([]Token{token, token2}, []Expression{expression, expression2}))
+	assertions.False(ContainsExpressionsInTokens([]Expression{expression, expression2}, []Token{token, token2}))
 
 	token = Token{
 		Type:     "bracket",
@@ -76,7 +76,7 @@ func TestFindExpressionsInTokens(t *testing.T) {
 		Type: "keyword",
 		Text: "if",
 	}
-	assertions.False(FindExpressionsInTokens([]Token{token}, []Expression{expression}))
+	assertions.False(ContainsExpressionsInTokens([]Expression{expression}, []Token{token}))
 
 	token2 = Token{
 		Type:     "bracket",
@@ -84,14 +84,14 @@ func TestFindExpressionsInTokens(t *testing.T) {
 		Text:     ")",
 	}
 
-	assertions.False(FindExpressionsInTokens([]Token{token, token2}, []Expression{expression}))
+	assertions.False(ContainsExpressionsInTokens([]Expression{expression}, []Token{token, token2}))
 
-	assertions.False(FindExpressionsInTokens([]Token{token}, []Expression{expression, expression2}))
+	assertions.False(ContainsExpressionsInTokens([]Expression{expression, expression2}, []Token{token}))
 
-	assertions.False(FindExpressionsInTokens([]Token{token}, []Expression{}))
+	assertions.False(ContainsExpressionsInTokens([]Expression{}, []Token{token}))
 }
 
-func TestFindComplexExpressionsInTokens(t *testing.T) {
+func TestContainsComplexExpressionsInTokens(t *testing.T) {
 	assertions := assert.New(t)
 	expression := Expression{
 		Type: "bracket",
@@ -124,10 +124,10 @@ func TestFindComplexExpressionsInTokens(t *testing.T) {
 		Text:     "{",
 	}
 
-	assertions.True(FindExpressionsInTokens([]Token{token, token2, token3, token4}, []Expression{expression, expression2}))
+	assertions.True(ContainsExpressionsInTokens([]Expression{expression, expression2}, []Token{token, token2, token3, token4}))
 }
 
-func TestFindComplexExpressionsInTokensOnSecondTime(t *testing.T) {
+func TestContainsComplexExpressionsInTokensOnSecondTime(t *testing.T) {
 	assertions := assert.New(t)
 	expression := Expression{
 		Type: "bracket",
@@ -160,10 +160,10 @@ func TestFindComplexExpressionsInTokensOnSecondTime(t *testing.T) {
 		Text:     "{",
 	}
 
-	assertions.True(FindExpressionsInTokens([]Token{token, token2, token3, token4}, []Expression{expression, expression2}))
+	assertions.True(ContainsExpressionsInTokens([]Expression{expression, expression2}, []Token{token, token2, token3, token4}))
 }
 
-func TestDoNotFindComplexExpressionsInTokens(t *testing.T) {
+func TestNotContainsComplexExpressionsInTokens(t *testing.T) {
 	assertions := assert.New(t)
 	expression := Expression{
 		Type: "bracket",
@@ -196,7 +196,7 @@ func TestDoNotFindComplexExpressionsInTokens(t *testing.T) {
 		Text:     "{",
 	}
 
-	assertions.False(FindExpressionsInTokens([]Token{token, token2, token3, token4}, []Expression{expression, expression2}))
+	assertions.False(ContainsExpressionsInTokens([]Expression{expression, expression2}, []Token{token, token2, token3, token4}))
 }
 
 func TestMatchToken(t *testing.T) {

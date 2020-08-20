@@ -7,24 +7,24 @@ type Expression struct {
 	Text string // words to be matched with a token (empty for any)
 }
 
-// FindExpressionsInTokens checks if a given Expression is present in a list of tokens
-func FindExpressionsInTokens(tokens []Token, expressions []Expression) bool {
+// ContainsExpressionsInTokens checks if a given Expression is present in a list of tokens
+func ContainsExpressionsInTokens(expressions []Expression, tokens []Token) bool {
 	if len(expressions) > len(tokens) {
 		return false
 	}
 	if len(expressions) > 1 {
-		return FindExpressionsInTokens(tokens[1:], expressions[1:])
+		return ContainsExpressionsInTokens(expressions[1:], tokens[1:])
 	} else if len(expressions) == 1 {
 		if len(tokens) > 1 {
-			return FindExpressionInTokens(tokens[1:], expressions[0])
+			return ContainsExpressionInTokens(expressions[0], tokens[1:])
 		}
-		return FindExpressionInTokens(tokens, expressions[0])
+		return ContainsExpressionInTokens(expressions[0], tokens)
 	}
 	return false
 }
 
-// FindExpressionInTokens checks if a given Expression is present in a list of tokens
-func FindExpressionInTokens(tokens []Token, expression Expression) bool {
+// ContainsExpressionInTokens checks if a given Expression is present in a list of tokens
+func ContainsExpressionInTokens(expression Expression, tokens []Token) bool {
 	for _, token := range tokens {
 		if MatchToken(token, expression) {
 			return true
